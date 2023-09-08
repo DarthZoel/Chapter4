@@ -54,7 +54,7 @@ Sebuah mal memiliki aturan biaya parkir sebagai berikut:
 2. Untuk setiap jam berikutnya (lebih dari 1 jam), biaya tambahan adalah Rp5.000/jam.
 3. Jika parkir lebih dari 5 jam, akan diberikan diskon Rp10.000 dari total biaya.
 4. Parkir di hari Minggu dikenakan biaya tambahan Rp5.000.
-5. Jika total biaya parkir lebih dari RCLEARp30.000 dan parkir dilakukan pada hari libur nasional, maka akan diberikan diskon tambahan sebesar Rp7.000.
+5. Jika total biaya parkir lebih dari Rp30.000 dan parkir dilakukan pada hari libur nasional, maka akan diberikan diskon tambahan sebesar Rp7.000.
 
 Buatlah fungsi hitungBiayaParkir(lamaParkir, hari, liburNasional) yang menerima parameter:
 1. lamaParkir (number): Durasi parkir dalam jam.
@@ -127,22 +127,22 @@ Fungsi ini harus mengembalikan sebuah string yang berisi daftar acara yang akan 
 console.log("============ Soal Tiga ============");
 
 function jadwalFestival(hari, cuaca, suhu, angin) {
-   let hujan = cuaca === "Hujan" ? true:false
+   let hujan = cuaca.toLowerCase() === "hujan" ? true:false
    let anginKencang = angin > 20 ? true:false
-   let daftarAcara = ["Pameran Seni"]
+   let daftarAcara = "Pameran Seni"
    if(hujan && anginKencang){
     "Semua acara di luar ruangan akan dibatalkan."
    } else if(hujan && !anginKencang){
-    daftarAcara.push("Acara Dalam ruangan")
+    daftarAcara += ", Acara Dalam Ruangan"
    }
    if(suhu < 5){
-    daftarAcara.push("Acara konser malam harus diganti dengan acara indoor")
+    daftarAcara += ", Acara konser malam harus diganti dengan acara indoor"
    }
-   if(cuaca === "Cerah" && suhu > 25){
-    daftarAcara.push("Pesta Es Krim")
+   if(cuaca.toLowerCase() === "cerah" && suhu > 25){
+    daftarAcara += ", Pesta Es Krim"
    }
-   if(hari === "Minggu" && cuaca === "Cerah"){
-    daftarAcara.push("Maraton Senja")
+   if(hari.toLowerCase() === "minggu" && cuaca.toLowerCase() === "cerah"){
+    daftarAcara += ", Maraton Senja"
    }  
    return `Daftar Acara: ${daftarAcara}.`
 }
